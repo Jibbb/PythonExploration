@@ -1,0 +1,63 @@
+package fruitgame;
+
+import java.util.Scanner;
+
+public class FruitGame
+{
+
+    public static void main(String[] args)
+    {
+
+        int winState = 0;
+        String userinput = "";
+        int randomNum = (int) (Math.random() * 4);
+        int strikes = 1;
+
+        Scanner input = new Scanner(System.in);
+        
+        String userInput;
+          
+        String[] selections = {"pineapple", "apple", "orange", "lime", "mango"};
+
+        String [] questions = {"A spikey fruit a sponge lives in.",
+                     "One of these a day keeps the doctor away.",
+                     "It's annoying, and makes great juice.", "Green, tart, and small.",
+                     "Orangish-red and could be mistaken for an apple at a distance."};
+
+
+        System.out.println("\n\n\n------------------------------------------------\n"+
+              "|          Jayson's Fruit Guessing Game        |\n"+
+              "------------------------------------------------\n"+
+              "How This Works:\n"+
+              "The computer will generate a hint at what the\n"+
+              "fruit is. You must type the fruit's name in and\n"+
+              "hit 'Enter' to submit your guess.\n"+
+              "Good luck! Make sure answers are all lowercae!\n"+
+              "------------------------------------------------\n\n\n");
+
+        while (winState != 1)
+        {
+            System.out.println("Your hint is: \n"+questions[randomNum]+"\n\n\nType answer below: \n\n");
+            
+            userInput = input.nextLine();
+
+            if (userInput.equals(selections[randomNum]))
+            {
+                winState = 1;
+            }
+            
+            else
+            {
+                strikes +=1;
+                System.out.println("Incorrect. Try again, or check punctuation.\n----------------------------\n\n");
+            }
+        }
+        
+        System.out.println("----------------------------------------"+
+              "\n\nCorrect! \n"+selections[randomNum]+
+              " is the correct answer!\n\nAttempts made: "+
+              strikes+
+              "\n\n\n----------------------------------------");
+    }
+    
+}
